@@ -1,15 +1,20 @@
 import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
+const PORT = process.env.PORT;
+const API = process.env.API
+const dirname = path.dirname(fileURLToPath(import.meta.url)); 
 
-const PORT = 3000;
+app.set('view engine', 'ejs');
+app.set('views', path.join(dirname, 'views'));
+app.use(express.static(path.join(dirname, 'public')));
 
-// Basic route
-app.get('/', (req, res) => {
-    res.send("HAHAHAH!")
+app.get(`/${API}`, (_, res) => {
+    res.render('index', {title: "FilmRate7", list: ["Film1", "Film2"]});
 });
 
-// Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`APP is running on http://localhost:${PORT}/${API}`);
 });

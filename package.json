@@ -4,7 +4,7 @@
   "main": "src/server.ts",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon --env-file=.env src/server.ts"
   },
   "keywords": [],
   "author": "RYS",
