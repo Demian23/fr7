@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db{
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Movie {
+    id          Int @id @default(autoincrement()) 
+    title_ru    String
+    title_or    String?
+    genres      Genre[]
+    duration    Int
+    launch      DateTime
+    marksAmount Int @map("marks_amount")
+    marksScore  Int @map("marks_score")
+    marks       Mark[]
+
+    @@map("movie")
+}
+
+model User {
+    id          Int @id @default(autoincrement())
+    login       String
+    email       String  @unique
+    marks       Mark[]
+
+    @@map("user")
+}
+
+model Genre{
+    id      Int @id @default(autoincrement())
+    value   String @unique
+    movies  Movie[]
+
+    @@map("genre")
+}
+
+model Mark{
+    movie       Movie       @relation(fields: [movieId], references: [id])
+    movieId     Int         @map("movie_id")
+    user        User        @relation(fields: [userId], references: [id]) 
+    userId      Int         @map("user_id")
+    assignedAt  DateTime    @default(now()) @map("assigned_at")
+    value       Int
+
+    @@id([movieId, userId])
+    @@map("mark")
+}
