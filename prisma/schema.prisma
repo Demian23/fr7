@@ -12,7 +12,8 @@ model Movie {
     id          Int @id @default(autoincrement()) 
     title_ru    String
     title_or    String?
-    genres      Genre[]
+    genres      MovieGenre[]
+    countries   MovieCountry[]
     duration    Int
     launch      DateTime
     marksAmount Int @map("marks_amount")
@@ -34,9 +35,37 @@ model User {
 model Genre{
     id      Int @id @default(autoincrement())
     value   String @unique
-    movies  Movie[]
+    movies  MovieGenre[]
 
     @@map("genre")
+}
+
+model Country{
+    id      Int @id @default(autoincrement())
+    value   String @unique
+    movies  MovieCountry[]
+
+    @@map("country")
+}
+
+model MovieGenre{
+    movie       Movie       @relation(fields: [movieId], references: [id])
+    movieId     Int         @map("movie_id")
+    genre       Genre       @relation(fields: [genreId], references: [id]) 
+    genreId     Int         @map("genre_id")
+
+    @@id([movieId, genreId])
+    @@map("m2m_movie_genre")
+}
+
+model MovieCountry{
+    movie       Movie       @relation(fields: [movieId], references: [id])
+    movieId     Int         @map("movie_id")
+    country     Country     @relation(fields: [countryId], references: [id]) 
+    countryId   Int         @map("country_id")
+
+    @@id([movieId, countryId])
+    @@map("m2m_movie_country")
 }
 
 model Mark{

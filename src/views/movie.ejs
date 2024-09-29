@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= movie.title_ru %> - Детали</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1><%= movie.title_ru %></h1>
+    <p><strong>Дата запуска:</strong> <%= movie.launch.toLocaleDateString() %></p>
+    <p><strong>Длительность:</strong> <%= movie.duration %> минут</p>
+    <p><strong>Средняя оценка:</strong> <%= movie.marksAmount > 0 ? (movie.marksScore / movie.marksAmount).toFixed(2) : 'Нет оценок' %></p>
+    
+    <h2>Жанры</h2>
+    <ul>
+        <% if (movie.genres.length > 0) { %>
+            <% movie.genres.forEach(movieGenre => { %>
+                <li><%= movieGenre.genre.value %></li>
+            <% }) %>
+        <% } else { %>
+            <li>Нет жанров</li>
+        <% } %>
+    </ul>
+
+    <h2>Страны</h2>
+    <ul>
+        <% if (movie.countries.length > 0) { %>
+            <% movie.countries.forEach(movieCountry => { %>
+                <li><%= movieCountry.country.value %></li>
+            <% }) %>
+        <% } else { %>
+            <li>Нет стран</li>
+        <% } %>
+    </ul>
+
+    <h2>Ваша оценка</h2>
+    <% if (movie.marks.length > 0) { %>
+        <p>Ваша оценка: <strong><%= movie.marks[0].value %></strong></p>
+        <p>Время оценки: <strong><%= movie.marks[0].assignedAt %></strong></p>
+        <form action="/fr7/movies/<%= movie.id %>/rate" method="POST">
+            <label for="newMark">Изменить оценку:</label>
+            <input type="number" name="value" id="newMark" min="1" max="100" value="<%= movie.marks[0].value %>" required>
+            <button type="submit">Обновить</button>
+        </form>
+    <% } else { %>
+        <form action="/fr7/movies/<%= movie.id %>/rate" method="POST">
+            <label for="newMark">Оцените фильм:</label>
+            <input type="number" name="value" id="newMark" min="1" max="100" required>
+            <button type="submit">Оценить</button>
+        </form>
+    <% } %>
+
+    <a href="/fr7/movies">Назад к списку фильмов</a>
+</body>
+</html>

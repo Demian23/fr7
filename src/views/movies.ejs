@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список фильмов</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Список фильмов</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Дата запуска</th>
+                <th>Средняя оценка</th>
+                <th>Жанры</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% movies.forEach(movie => { %>
+                <tr onclick="location.href='/fr7/movies/<%= movie.id %>'" style="cursor: pointer;">
+                    <td><%= movie.title_ru %></td>
+                    <td><%= movie.launch.toLocaleDateString() %></td>
+                    <td><%= movie.marksAmount > 0 ? (movie.marksScore / movie.marksAmount).toFixed(2) : 'Нет оценок' %></td>
+                    <td>
+                        <% if (movie.genres.length > 0) { %>
+                            <ul>
+                                <% movie.genres.forEach(movieGenre => { %>
+                                    <li><%= movieGenre.genre.value %></li>
+                                <% }) %>
+                            </ul>
+                        <% } else { %>
+                            Нет жанров
+                        <% } %>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>    
+    </table>
+</body>
+</html>
