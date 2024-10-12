@@ -1,4 +1,3 @@
-import { NotFound } from '../errors/Fr7Errors.js';
 import { PrismaClient } from '@prisma/client';
 
 export class MoviesRepository{
