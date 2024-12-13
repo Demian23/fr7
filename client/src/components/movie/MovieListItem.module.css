@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Merriweather:wght@400;700&display=swap');
+
+.movieItem {
+    display: flex;
+    background-color: ivory;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.movieItem:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.leftPart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 16px;
+    border-right: 1px solid #ccc;
+    min-width: 80px;
+}
+
+.centerPart {
+    flex-grow: 1;
+    padding: 0 16px;
+}
+
+.rightPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    min-width: 100px;
+}
+
+.titleRu {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #2e8b57;
+    margin: 0 0 8px 0;
+}
+
+.titleOrigin {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #333;
+    margin: 0 0 8px 0;
+}
+
+.genres {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+.yearDurationWrapper {
+    background-color: rgba(46, 139, 87, 0.1);
+    padding: 8px;
+    border-radius: 4px;
+    text-align: right;
+}
+
+.year {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #1a5f3c;
+    margin: 0 0 4px 0;
+}
+
+.duration {
+    font-size: 0.9em;
+    color: #2e8b57;
+    margin: 0;
+}
+
+.launchDate {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #2e8b57;
+    margin: 0 0 8px 0;
+}
+
+.markContainer {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avgMark {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

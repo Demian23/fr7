@@ -1,0 +1,48 @@
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: ivory;
+    padding: 20px;
+    text-align: center;
+}
+
+.errorCode {
+    font-family: 'Roboto Slab', serif;
+    font-size: 6em;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.errorTitle {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2.5em;
+    color: #2e8b57;
+    margin-bottom: 20px;
+}
+
+.errorMessage {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.returnButton {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1em;
+    padding: 10px 20px;
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.returnButton:hover {
+    background-color: #1a5f3c;
+}

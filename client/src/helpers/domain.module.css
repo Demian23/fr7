@@ -1,0 +1,34 @@
+.markNoneB {
+    background-color: #d3d3d3;
+}
+.markRedB {
+    background-color: #ff6b6b;
+}
+.markOrangeB {
+    background-color: #feca57;
+}
+.markYellowB {
+    background-color: #f1c40f;
+}
+.markGreenB {
+    background-color: #5cd85a;
+}
+.markBlueB {
+    background-color: #3949ab;
+}
+
+.markRed {
+    color: #ff6b6b;
+}
+.markOrange {
+    color: #feca57;
+}
+.markYellow {
+    color: #f1c40f;
+}
+.markGreen {
+    color: #5cd85a;
+}
+.markBlue {
+    color: #3949ab;
+}

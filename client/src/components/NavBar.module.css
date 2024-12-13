@@ -1,0 +1,51 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2e8b57;
+    color: white;
+}
+
+.leftSection,
+.rightSection {
+    flex: 1;
+}
+
+.centerSection {
+    flex: 2;
+    text-align: center;
+}
+
+.projectName {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.navLink,
+.navButton {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.navLink:hover,
+.navButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.rightSection {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}

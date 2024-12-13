@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db{
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Movie {
+    id          Int @id @default(autoincrement()) 
+    title_ru    String
+    title_or    String?
+    duration    Int
+    launch      DateTime
+    marksAmount Int
+    marksScore  Int
+
+    genres          MovieGenre[]
+    countries       MovieCountry[]
+    persons         MoviePerson[]
+    marks           Mark[]
+    descriptions    Description[]
+}
+
+model Description {
+    id          Int         @id @default(autoincrement())
+    value       String      @db.Text 
+    movieId     Int
+    movie       Movie       @relation(fields: [movieId], references: [id])
+}
+
+// problem of persons with common name
+model Person {
+    id      Int @id @default(autoincrement())
+    name    String @unique
+
+    movies  MoviePerson[]
+}
+
+// relation: actor, director
+// index
+model MoviePerson {
+    movieId     Int
+    movie       Movie       @relation(fields: [movieId], references: [id])
+    personId    Int
+    person      Person      @relation(fields: [personId], references: [id]) 
+    relation    String
+
+    @@id([movieId, personId])
+}
+
+model User {
+    id          Int @id @default(autoincrement())
+    login       String
+    email       String  @unique
+    role        String
+    password    String
+
+    marks       Mark[]
+    tokens      RefreshToken[]
+}
+
+model RefreshToken {
+    id          Int @id @default(autoincrement())
+    userId      Int
+    revoked     Boolean @default(false)
+    hashedVal   String @unique
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    expiredAt   DateTime
+
+    User        User @relation(fields: [userId], references: [id])
+}
+
+model Genre{
+    id      Int @id @default(autoincrement())
+    value   String @unique
+
+    movies  MovieGenre[]
+}
+
+model Country{
+    id      Int @id @default(autoincrement())
+    value   String @unique
+
+    movies  MovieCountry[]
+}
+
+model MovieGenre{
+    movie       Movie       @relation(fields: [movieId], references: [id])
+    movieId     Int
+    genre       Genre       @relation(fields: [genreId], references: [id]) 
+    genreId     Int
+
+    @@id([movieId, genreId])
+}
+
+model MovieCountry{
+    movie       Movie       @relation(fields: [movieId], references: [id])
+    movieId     Int
+    country     Country     @relation(fields: [countryId], references: [id]) 
+    countryId   Int
+
+    @@id([movieId, countryId])
+}
+
+model Mark{
+    movie       Movie       @relation(fields: [movieId], references: [id])
+    movieId     Int
+    user        User        @relation(fields: [userId], references: [id]) 
+    userId      Int
+    assignedAt  DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+    value       Int
+
+    @@id([movieId, userId])
+}

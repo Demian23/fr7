@@ -1,0 +1,155 @@
+.movieDetailed {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: ivory;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.titleRu {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2.5em;
+    color: #2e8b57;
+    margin-right: 15px;
+}
+
+.avgMark {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.titleOrigin {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.leftColumn,
+.rightColumn {
+    flex-basis: 48%;
+}
+
+.info,
+.userMark,
+.personList,
+.descriptions {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.genres {
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 10px;
+}
+
+.countries {
+    font-family: 'Georgia', serif;
+    margin-bottom: 10px;
+}
+
+.launchDuration {
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userMark h3 {
+    color: #2e8b57;
+    margin-bottom: 10px;
+}
+
+.markInput {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.markValue {
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.markButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.markButton {
+    padding: 5px 10px;
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.markButton:hover:not(:disabled) {
+    background-color: #1a5f3c;
+}
+
+.markButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.markDates {
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: #999;
+}
+
+.markDates p {
+    margin: 5px 0;
+}
+
+.personList h3 {
+    color: #2e8b57;
+    margin-bottom: 10px;
+}
+
+.personList ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.personList li {
+    margin-bottom: 5px;
+}
+
+.personList a {
+    color: #1a5f3c;
+    text-decoration: none;
+}
+
+.personList a:hover {
+    text-decoration: underline;
+}
+
+.descriptions h3 {
+    color: #2e8b57;
+    margin-bottom: 10px;
+}
+
+.descriptions p {
+    margin-bottom: 10px;
+}
